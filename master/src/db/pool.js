@@ -24,8 +24,11 @@ pgClient.on("connect", client => {
         type varchar(3) NOT NULL
         );
       `
-      );
+      )
+      .then(fullfilled =>{ console.log("table created!")})
+      .catch(err => { })
 });
+
 
 
 
