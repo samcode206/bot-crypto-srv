@@ -54,4 +54,4 @@ to run multiple pairs, read the comments carefully uncomment the commented servi
 7. figure out how our client will read the data and create indices on the most queried fields (drawback will be slower writes to the database)
 8. look into a heavier weight pub/sub system that supports acknowledgments & guaranteed delivery to improve reliability
 9. look into database replication and adding a database optimized for data analysis for improved performance
-10. add Error Loop Detection to prevent detect if a container if a container is stuck in a loop for errors (fetching request fails, or any other error) and stop/restart/kill that container
+10. add Error Loop Detection to detect if a container is stuck in a loop of errors (fetching request fails, or any other error) and stop/restart/kill that container
