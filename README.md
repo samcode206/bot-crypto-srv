@@ -2,7 +2,7 @@
 # bot-services-uphold
 
 to run the application you must have docker installed, once you have installed docker use one of the following commands to run the tests 
-run one of the following commands depending on your version of docker.
+run one of the commands below depending on your version of docker.
 
 ## design 
 I am building this application in containers from the beginning to make it possible to scale while maintaining simple code that lives in containers and communicates via events. 
