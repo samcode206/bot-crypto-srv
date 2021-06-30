@@ -32,7 +32,6 @@ it("returns a report of the oscilation is greater than given for one if one is g
         expect(reportRes.askReport.currency[0]).toEqual("USD");
         expect(reportRes.askReport.currency[1]).toEqual("BTC");
 
-        expect(reportRes.askReport.alertDate).toBeInstanceOf(Date);
 }); 
 
 
@@ -60,7 +59,7 @@ it("returns a report of the oscilation for both if both are greater", async () =
         expect(reportRes.askReport.percentage).toEqual(5);
         expect(reportRes.bidReport.percentage).toEqual(50);
 
-        expect(reportRes.askReport.alertDate).toBeInstanceOf(Date);
+
 }); 
 
 
