@@ -1,0 +1,19 @@
+{
+  "name": "assigner",
+  "version": "1.0.0",
+  "description": "take home assignment from Uphold",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "jest --watchAll --detectOpenHandles"
+  },
+  "author": "Sameem Hadi",
+  "jest": {
+    "testEnvironment": "node"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "pg": "^8.0.3",
+    "redis": "^3.1.2"
+  }
+}

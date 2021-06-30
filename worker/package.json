@@ -1,0 +1,23 @@
+{
+  "name": "uphold-bot",
+  "version": "1.0.0",
+  "description": "take home assignment from Uphold",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "jest --watchAll --detectOpenHandles"
+  },
+  "author": "Sameem Hadi",
+  "jest": {
+    "testEnvironment": "node"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "dotenv": "^10.0.0",
+    "redis": "^3.1.2"
+  },
+  "devDependencies": {
+    "jest": "^27.0.6"
+  }
+}

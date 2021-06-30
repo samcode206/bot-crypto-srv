@@ -1,0 +1,60 @@
+version: '3'
+services: 
+  postgres: # postgres db must mount to a volume for production use or use a managed database service!!!! 
+    image: 'postgres:latest'
+    environment: 
+      - POSTGRES_HOST_AUTH_METHOD=trust
+      - POSTGRES_PASSWORD=mypassword
+  redis:
+    image: 'redis:latest'
+  master:
+    build: 
+      dockerfile: Dockerfile
+      context: ./master
+    environment: 
+      - REDIS_HOST=redis 
+      - REDIS_PORT=6379
+      # dev purposes only 
+      - PGUSER=postgres 
+      - PGHOST=postgres 
+      - PGPASSWORD=mypassword
+      - PGDATABASE=postgres
+      - PGPORT=5432
+      # - CHANNELS=[["BTC", "USD"]]  # USE DOUBLE QUOTES for Values and sperate with commas betwwen each array (must be parsed as a valid json string)!!!
+      - CHANNELS=[["BTC", "USD"], ["BTC", "EUR"], ["USD","EUR"]]  # COMMENT THE line above AND UNCOMMENT THE OTHER WORKERS TO handle multi currency pairs at the same time 
+  btc-usd-worker:
+    build: 
+      dockerfile: Dockerfile
+      context: ./worker 
+    environment: 
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - BASE_URL=https://api.uphold.com/v0/ticker/
+      - TIME_BETWEEN=5000 # feel free to change
+      - NOTIFY_AT=0.01 # feel free to change 
+      - CURR_ONE=BTC
+      - CUR_TWO=USD
+  btc-eur-worker:
+    build: 
+      dockerfile: Dockerfile
+      context: ./worker 
+    environment: 
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - BASE_URL=https://api.uphold.com/v0/ticker/
+      - TIME_BETWEEN=5000 # feel free to change represent ms time between each request 
+      - NOTIFY_AT=0.01 # feel free to change  represents percentage out of 100%
+      - CURR_ONE=BTC
+      - CUR_TWO=EUR
+  usd-eur-worker:
+    build: 
+      dockerfile: Dockerfile
+      context: ./worker 
+    environment: 
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - BASE_URL=https://api.uphold.com/v0/ticker/
+      - TIME_BETWEEN=5000 # feel free to change represent ms time between each request 
+      - NOTIFY_AT=0.01 # feel free to change  represents percentage out of 100%
+      - CURR_ONE=USD
+      - CUR_TWO=EUR
