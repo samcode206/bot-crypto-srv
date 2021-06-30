@@ -21,7 +21,7 @@ services:
       - PGDATABASE=postgres
       - PGPORT=5432
       - CHANNELS=[["BTC", "USD"]]  # USE DOUBLE QUOTES for Values and sperate with commas betwwen each array (must be parsed as a valid json string)!!!
-     #- CHANNELS=[["BTC", "USD"], ["BTC", "EUR"], ["USD","EUR"]]  # COMMENT THE line above AND UNCOMMENT THE OTHER WORKERS TO handle multi currency pairs at the same time 
+    # - CHANNELS=[["BTC", "USD"], ["BTC", "EUR"], ["USD","EUR"]]  # COMMENT THE line above AND UNCOMMENT THE OTHER WORKERS TO handle multi currency pairs at the same time 
   btc-usd-worker:
     build: 
       dockerfile: Dockerfile
