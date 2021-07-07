@@ -50,8 +50,7 @@ to run multiple pairs, read the comments carefully uncomment the commented servi
 3. turn the master service into a RESTful Api which will require the use of a service like Dockerode to spin up containers on the fly instead of docker compose (drawback will be that we have to manage container networking instead of delegating to docker compose to manage networking).
 4. write out tests for the master (only the worker is currently tested because this is a demo and worker is doing all the heavy-work so its important to test it).
 5. instead if simply logging the alert, use a messaging service such as AWS SES, AWS SNS, SendGrid, etc. In order to notify client. 
-6. address bug on the first insert (duplicate warning yet everything still works!)
-7. figure out how our client will read the data and create indices on the most queried fields (drawback will be slower writes to the database)
-8. look into a heavier weight pub/sub system that supports acknowledgments & guaranteed delivery to improve reliability
-9. look into database replication and adding a database optimized for data analysis for improved performance
-10. add Error Loop Detection to detect if a container is stuck in a loop of errors (fetching request fails, or any other error) and stop/restart/kill that container
+6. figure out how our client will read the data and create indices on the most queried fields (drawback will be slower writes to the database)
+7. look into a heavier weight pub/sub system that supports acknowledgments & guaranteed delivery to improve reliability
+8. look into database replication and adding a database optimized for data analysis for improved performance
+9. add Error Loop Detection to detect if a container is stuck in a loop of errors (fetching request fails, or any other error) and stop/restart/kill that container
